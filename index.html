@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./index.css">
+
+    <style>
+        .bg-red {
+            background-color: red;
+        }
+
+        .bg-green {
+            background-color: green;
+        }
+    </style>
+
+    <script src="./index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+
+
+
+        function toggleColor() {
+            // condition check bg-color of an element
+            // if bg-color red, remove red, add green
+            // else remove green, add red
+            let element = document.getElementById("header");  // this is reference of the element
+            let classList = element.classList; // it will return array of classes
+            let elementBgColorRed = false;
+            for (let item of classList) {
+                if (item == "bg-red") {
+                    elementBgColorRed = true;
+                    break;
+                }
+
+            }
+            if (elementBgColorRed == true) {
+                element.classList.remove("bg-red");
+                element.classList.add("bg-green");
+            }
+            else {
+                element.classList.remove("bg-green");
+                element.classList.add("bg-red");
+            }
+
+
+        }
+        function systemLoads1() {
+            let length = document.getElementsByClassName("bg-red").length;
+            for (let i = length - 1; i >= 0; i--) {
+                document.getElementsByClassName("bg-red")[i].classList.add("bg-green");
+                document.getElementsByClassName("bg-red")[i].classList.remove("bg-red");
+
+            }
+            // for(let i=0; i<length; i++){
+            //     document.getElementsByClassName("bg-red")[i].classList.add("bg-green");
+            //     document.getElementsByClassName("bg-red")[i].classList.remove("bg-red");
+            // }
+
+        }
+
+        function showAlert(){
+            let elements = document.getElementsByName("gender");
+            for(let item of elements){
+                if(item.checked == true){
+                    alert(`${item.value} checked`);
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body onload="systemLoads()">
+    <h1 class="bg-red text-light" id="header">JS Session 1</h1>
+    <h1 class="bg-red text-light" id="header">JS Session 2</h1>
+
+    <div>
+        <input type="radio" value="Male" name="gender"><label>Male</label>
+    </div>
+    <div>
+        <input type="radio" value="Female" name="gender"><label>Female</label>
+    </div>
+    <input type="button" value="save" onclick="showAlert()">
+</body>
+
+</html>
